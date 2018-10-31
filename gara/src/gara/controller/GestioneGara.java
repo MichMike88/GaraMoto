@@ -17,7 +17,7 @@ public class GestioneGara {
 	
 	public PilotaDao cercaPilota(String nome,String cognome) throws ClassNotFoundException, SQLException {
 		
-		pdao.cercapilota(nome, cognome,codicefiscale);
+		pdao.cercapilota(nome, cognome);
 		
 		return pdao;
 	}
