@@ -14,9 +14,9 @@ public class PilotaDao {
 
 		Connection connect = null;
 
-		PilotaVo pilota = null;
+		PilotaVo pilota = new PilotaVo();
 
-		String url = "jdbc:mysql://localhost:3306/moto";
+		String url = "jdbc:mysql://localhost:3306/moto?autoReconnect=true&useSSL=false";
 		String username = "root";
 		String password = "root";
 
@@ -26,13 +26,11 @@ public class PilotaDao {
 
 		Statement smt=connect.createStatement();
 		
-		String query="select 'moto'.'pilota' from moto where nome='"+nome+"' and cognome='"+cognome;
-		
+		String query="SELECT nome,cognome from pilota where nome='"+nome+"' and cognome='"+cognome+"'";
+	
 		ResultSet rs=smt.executeQuery(query);
 		
 		while(rs.next()) {
-			pilota= new PilotaVo();
-			
 			pilota.setNome(rs.getString("nome"));
 			pilota.setCognome(rs.getString("cognome"));
 		}
@@ -41,21 +39,22 @@ public class PilotaDao {
 
 	}
 
-	public int inserscipilota(String nome,String cognome,String moto) throws ClassNotFoundException, SQLException {
+	public int inserscipilota(String nome,String cognome) throws ClassNotFoundException, SQLException {
 				
 		Connection connect= null;
 		
-		String url = "jdbc:mysql://localhost:3306/moto";
+		String driver="com.mysql.jdbc.Driver";
+		String url = "jdbc:mysql://localhost:3306/moto?autoReconnect=true&useSSL=false";
 		String username = "root";
 		String password = "root";
 
-		Class.forName("com.mysql.jdbc.Driver");
+		Class.forName(driver);
 
 		connect = DriverManager.getConnection(url, username, password);
 
 		Statement smt=connect.createStatement();
 		
-		String query="INSERT INTO `moto`.`pilota` (`nome`, `cognome`, `moto`) VALUES (nome='"+nome+"', cognome='"+cognome+"', moto='"+moto+"')";
+		String query="INSERT INTO pilota (`nome`, `cognome`) VALUES ('"+nome+"', '"+cognome+"')";
 		
 		int esito=smt.executeUpdate(query);
 				

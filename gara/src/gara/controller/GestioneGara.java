@@ -3,22 +3,26 @@ package gara.controller;
 import java.sql.SQLException;
 
 import gara.dao.PilotaDao;
+import gara.vo.PilotaVo;
 
 public class GestioneGara {
 
 	PilotaDao pdao= new PilotaDao();
+	PilotaVo pv= new PilotaVo();
 	
-	public PilotaDao inserisciPilota(String nome,String cognome,String codicefiscale) throws ClassNotFoundException, SQLException {
+	public int inserisciPilota(String nome,String cognome) throws ClassNotFoundException, SQLException {
 		
-		pdao.cercapilota(nome, cognome, codicefiscale);
+		int esito; 
 		
-		return pdao;
+		esito = pdao.inserscipilota(nome, cognome);
+		
+		return esito;
 	}
 	
-	public PilotaDao cercaPilota(String nome,String cognome) throws ClassNotFoundException, SQLException {
+	public PilotaVo cercaPilota(String nome,String cognome) throws ClassNotFoundException, SQLException {
 		
-		pdao.cercapilota(nome, cognome);
+		pv= pdao.cercapilota(nome, cognome);
 		
-		return pdao;
+		return pv;
 	}
 }

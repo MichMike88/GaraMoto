@@ -24,5 +24,10 @@ public class PilotaVo {
 	public void setNumero_moto(String numero_moto) {
 		this.numero_moto = numero_moto;
 	}
+	@Override
+	public String toString() {
+		return "Ecco il risultato della ricerca: "+nome+" "+cognome;
+	}
+	
 
 }
