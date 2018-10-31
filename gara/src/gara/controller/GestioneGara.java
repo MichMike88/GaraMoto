@@ -8,7 +8,7 @@ public class GestioneGara {
 
 	PilotaDao pdao= new PilotaDao();
 	
-	public PilotaDao inserisciPilota(String nome,String cognome,String codicefiscale) throws ClassNotFoundException, SQLException {
+	public PilotaDao inserisciPilota(String nome,String ,String codicefiscale) throws ClassNotFoundException, SQLException {
 		
 		pdao.cercapilota(nome, cognome, codicefiscale);
 		
