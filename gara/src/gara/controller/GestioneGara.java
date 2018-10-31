@@ -10,7 +10,7 @@ public class GestioneGara {
 	
 	public PilotaDao inserisciPilota(String nome,String cognome) throws ClassNotFoundException, SQLException {
 		
-		pdao.cercapilota(nome, cognome);
+		pdao.cercapilota(nome, );
 		
 		return pdao;
 	}
