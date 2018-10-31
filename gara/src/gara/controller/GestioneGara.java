@@ -1,6 +1,6 @@
 package gara.controller;
 
-
+import java.sql.SQLException;
 
 import gara.dao.PilotaDao;
 
